@@ -13,7 +13,7 @@ CREATE TABLE Boleto(
 B_Id smallint IDENTITY,
 B_IdSorteo smallint CONSTRAINT FK_BoletoSorteo FOREIGN KEY (B_IdSorteo) REFERENCES Sorteo(S_Id),
 B_Reintegro tinyint NOT NULL,
-B_TipoApuesta varchar(10) not null,
+B_TipoApuesta bit not null, -- @IMPORTANT! Tipo BIT B_TipoApuesta 0 y 1 DONDE (0 = SENCILLA) & (1 = MULTIPLE)
 CONSTRAINT PK_Boleto  PRIMARY KEY (B_Id, B_IdSorteo) --hay que reiniciar el identity del idBoleto cuando añadamos un nuevo sorteo (Con DBCC CHECKIDENT)
 )
 GO
