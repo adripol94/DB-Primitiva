@@ -1,8 +1,8 @@
-CREATE PROCEDURE grabarX @numeroBoletos tinyint NOT NULL AS
+CREATE PROCEDURE grabarX @numeroBoletos int AS
 BEGIN
-DECLARE @i tinyint SET @i = 0
+DECLARE @i int SET @i = 0
 DECLARE @date DATE SET @date = GETDATE()
-DECLARE @n1 tinyint, @n2 tinyint, @n3 tinyint, @n4 tinyint, @n5 tinyint, @n6 tinyint
+DECLARE @n1 int, @n2 int, @n3 int, @n4 int, @n5 int, @n6 int
 
 	WHILE @i < @numeroBoletos
 	BEGIN

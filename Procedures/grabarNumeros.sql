@@ -28,11 +28,11 @@ GO
 -- Procedimiento para añadir un boleto y sus 6 numeros
 -- @PARAM Sorteo DATE fecha del sorteo;
 -- @PARAM numero1-6 numero del sorteo
-CREATE PROCEDURE grabaSencilla @fecha_Sorteo DATE, @numero1 tinyint, @numero2 tinyint, 
-@numero3 tinyint, @numero4 tinyint, @numero5 tinyint, @numero6 tinyint AS
+CREATE PROCEDURE grabaSencilla @fecha_Sorteo DATE, @numero1 int, @numero2 int, 
+@numero3 int, @numero4 int, @numero5 int, @numero6 int AS
 
 DECLARE @IdBoletoInsertado smallint
-DECLARE @reintegro tinyint SET @reintegro = RAND()*(0-9)+0
+DECLARE @reintegro int SET @reintegro = RAND()*(0-9)+0
 DECLARE @Id_Sorteo smallint SET @Id_Sorteo = (SELECT S_id FROM Sorteo WHERE S_Fecha = @fecha_Sorteo)
 
 BEGIN
@@ -56,8 +56,8 @@ GO
 
 
 go
-CREATE PROCEDURE grabar5 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @Id_sorteo smallint, @IdBoletoInsertado smallint AS
+CREATE PROCEDURE grabar5 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
 		INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado,@Id_sorteo ,@2)
@@ -67,8 +67,8 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE grabar7 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @6 tinyint NOT NULL, @7 tinyint NOT NULL,
+CREATE PROCEDURE grabar7 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @6 int , @7 int ,
 @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
@@ -81,9 +81,9 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE grabar8 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @6 tinyint NOT NULL, @7 tinyint NOT NULL, 
-@8 tinyint NOT NULL, @Id_sorteo smallint, @IdBoletoInsertado smallint AS
+CREATE PROCEDURE grabar8 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @6 int , @7 int , 
+@8 int , @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
 		INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado,@Id_sorteo ,@2)
@@ -96,9 +96,9 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE grabar9 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @6 tinyint NOT NULL, @7 tinyint NOT NULL, 
-@8 tinyint NOT NULL, @9 tinyint NOT NULL, @Id_sorteo smallint, @IdBoletoInsertado smallint AS
+CREATE PROCEDURE grabar9 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @6 int , @7 int , 
+@8 int , @9 int , @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
 		INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado,@Id_sorteo ,@2)
@@ -112,9 +112,9 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE grabar10 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @6 tinyint NOT NULL, @7 tinyint NOT NULL, 
-@8 tinyint NOT NULL, @9 tinyint NOT NULL, @10 tinyint NOT NULL, @Id_sorteo smallint, @IdBoletoInsertado smallint AS
+CREATE PROCEDURE grabar10 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @6 int , @7 int , 
+@8 int , @9 int , @10 int , @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
 		INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado,@Id_sorteo ,@2)
@@ -129,9 +129,9 @@ BEGIN
 END
 
 go
-CREATE PROCEDURE grabar11 @1 tinyint NOT NULL, @2 tinyint NOT NULL,
-@3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL, @6 tinyint NOT NULL, @7 tinyint NOT NULL, 
-@8 tinyint NOT NULL, @9 tinyint NOT NULL, @10 tinyint NOT NULL, @11 tinyint NOT NULL, 
+CREATE PROCEDURE grabar11 @1 int , @2 int ,
+@3 int , @4 int , @5 int , @6 int , @7 int , 
+@8 int , @9 int , @10 int , @11 int , 
 @Id_sorteo smallint, @IdBoletoInsertado smallint AS
 BEGIN
 	INSERT INTO Boleto_Numero VALUES (@IdBoletoInsertado, @Id_sorteo ,@1)
@@ -151,13 +151,13 @@ go
 
 -- Hay que crear un procedimiento por cantidad de numeros insertados!!!! TODO
 
-CREATE PROCEDURE grabarMultiple @cantidadNumero tinyint NOT NULL, @Fecha_sorteo DATE NOT NULL, 
-@1 tinyint NOT NULL, @2 tinyint NOT NULL, @3 tinyint NOT NULL, @4 tinyint NOT NULL, @5 tinyint NOT NULL,
-@6 tinyint NULL, @7 tinyint NULL, @8 tinyint NULL, @9 tinyint NULL, @10 tinyint NULL, @11 tinyint NULL AS
+CREATE PROCEDURE grabarMultiple @cantidadNumero int , @Fecha_sorteo DATE , 
+@1 int , @2 int , @3 int , @4 int , @5 int ,
+@6 int NULL, @7 int NULL, @8 int NULL, @9 int NULL, @10 int NULL, @11 int NULL AS
 BEGIN
 DECLARE @contador smallint
 DECLARE @IdBoletoInsertado smallint
-DECLARE @reintegro tinyint 
+DECLARE @reintegro int 
 DECLARE @Id_Sorteo smallint 
 
 	IF @cantidadNumero = 6
