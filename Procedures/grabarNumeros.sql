@@ -32,7 +32,7 @@ CREATE PROCEDURE grabaSencilla @fecha_Sorteo DATE, @numero1 int, @numero2 int,
 @numero3 int, @numero4 int, @numero5 int, @numero6 int AS
 
 DECLARE @IdBoletoInsertado smallint
-DECLARE @reintegro int SET @reintegro = FLOOR(RAND()*(0-9)+0)
+DECLARE @reintegro int SET @reintegro = FLOOR(RAND()*(0-9)+0) * -1
 DECLARE @Id_Sorteo smallint SET @Id_Sorteo = (SELECT S_id FROM Sorteo WHERE S_Fecha = @fecha_Sorteo)
 
 BEGIN
@@ -151,7 +151,7 @@ go
 
 -- Hay que crear un procedimiento por cantidad de numeros insertados!!!! TODO
 
-CREATE PROCEDURE grabarMultiple @cantidadNumero int , @Fecha_sorteo DATE , 
+CREATE PROCEDURE grabarNumeros @cantidadNumero int , @Fecha_sorteo DATE , 
 @1 int , @2 int , @3 int , @4 int , @5 int ,
 @6 int NULL, @7 int NULL, @8 int NULL, @9 int NULL, @10 int NULL, @11 int NULL AS
 BEGIN
@@ -165,7 +165,7 @@ DECLARE @Id_Sorteo smallint
 	ELSE
 		BEGIN
 		
-		SET @reintegro = FLOOR(RAND()*(0-9)+0)
+		SET @reintegro = FLOOR(RAND()*(0-9)+0) * -1
 		SET @Id_Sorteo = (SELECT S_id FROM Sorteo WHERE S_Fecha = @fecha_Sorteo)
 
 		INSERT INTO Boleto (B_IdSorteo, B_Reintegro ,B_TipoApuesta) VALUES (@Id_sorteo, @reintegro, 0)
