@@ -32,7 +32,7 @@ CREATE PROCEDURE grabaSencilla @fecha_Sorteo DATE, @numero1 int, @numero2 int,
 @numero3 int, @numero4 int, @numero5 int, @numero6 int AS
 
 DECLARE @IdBoletoInsertado smallint
-DECLARE @reintegro int SET @reintegro = RAND()*(0-9)+0
+DECLARE @reintegro int SET @reintegro = FLOOR(RAND()*(0-9)+0)
 DECLARE @Id_Sorteo smallint SET @Id_Sorteo = (SELECT S_id FROM Sorteo WHERE S_Fecha = @fecha_Sorteo)
 
 BEGIN
@@ -165,7 +165,7 @@ DECLARE @Id_Sorteo smallint
 	ELSE
 		BEGIN
 		
-		SET @reintegro = RAND()*(0-9)+0
+		SET @reintegro = FLOOR(RAND()*(0-9)+0)
 		SET @Id_Sorteo = (SELECT S_id FROM Sorteo WHERE S_Fecha = @fecha_Sorteo)
 
 		INSERT INTO Boleto (B_IdSorteo, B_Reintegro ,B_TipoApuesta) VALUES (@Id_sorteo, @reintegro, 0)
